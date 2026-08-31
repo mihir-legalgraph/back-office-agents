@@ -1,0 +1,10 @@
+# working files — drafts, test harnesses, packaged builds of other variants
+_working/
+
+.DS_Store
+Thumbs.db
+node_modules/
+__pycache__/
+*.pyc
+*.pdf
+~$*

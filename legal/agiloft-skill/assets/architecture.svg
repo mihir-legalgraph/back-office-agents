@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2150 780" width="2150" height="780" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#857f6e"/>
+    </marker>
+    <linearGradient id="amber" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4a3714"/>
+      <stop offset="1" stop-color="#241b0b"/>
+    </linearGradient>
+    <style>
+      .box   { fill:#241f17; stroke:#cfc9ba; stroke-width:1.6; rx:9; ry:9; }
+      .t     { fill:#f2ede2; font-size:18px; font-weight:700; text-anchor:middle; }
+      .sub   { fill:#a49d8d; font-size:11.5px; font-weight:400; text-anchor:middle;
+               font-family:system-ui,-apple-system,'Segoe UI',sans-serif; }
+      .cap   { fill:#8d8676; font-size:12px; text-anchor:middle;
+               font-family:system-ui,-apple-system,'Segoe UI',sans-serif; }
+      .el    { fill:#9a9384; font-size:12.5px; text-anchor:middle; }
+      .edge  { stroke:#857f6e; stroke-width:1.7; fill:none; marker-end:url(#a); }
+      .dash  { stroke-dasharray:6 5; }
+    </style>
+  </defs>
+
+  <rect width="2150" height="780" fill="#1b1710"/>
+
+  <!-- ================= entry points ================= -->
+  <rect class="box" x="55"  y="201" width="217" height="52"/>
+  <text class="t" x="163.5" y="233">Question in chat</text>
+
+  <rect class="box" x="55"  y="554" width="238" height="52"/>
+  <text class="t" x="174" y="586">Follow-up question</text>
+
+  <!-- ================= the knowledgebase ================= -->
+  <path d="M322 355 A78 13 0 0 1 478 355 L478 445 A78 13 0 0 1 322 445 Z"
+        fill="#241f17" stroke="#cfc9ba" stroke-width="1.6"/>
+  <ellipse cx="400" cy="355" rx="78" ry="13" fill="#241f17" stroke="#cfc9ba" stroke-width="1.6"/>
+  <text class="t" x="400" y="411">Agiloft KB</text>
+  <text class="cap" x="400" y="480">learned at runtime</text>
+  <text class="cap" x="400" y="498">nothing hardcoded</text>
+
+  <!-- ================= main chain ================= -->
+  <rect class="box" x="525" y="369" width="217" height="62"/>
+  <text class="t"   x="633.5" y="396">Learn the schema</text>
+  <text class="sub" x="633.5" y="416">fields · statuses · types</text>
+
+  <rect class="box" x="772" y="369" width="218" height="62"/>
+  <text class="t"   x="881" y="396">Detect tools</text>
+  <text class="sub" x="881" y="416">read tools only, never write</text>
+
+  <rect class="box" x="1020" y="369" width="185" height="62"/>
+  <text class="t"   x="1112.5" y="396">Fetch &amp; count</text>
+  <text class="sub" x="1112.5" y="416">one query per month</text>
+
+  <!-- decision -->
+  <path d="M1323 322 L1401 400 L1323 478 L1245 400 Z"
+        fill="url(#amber)" stroke="#d9a02a" stroke-width="2"/>
+  <text class="t" x="1323" y="406" fill="#f6e6c4">Full page?</text>
+  <text class="cap" x="1323" y="505">the check that stops a page size becoming a total</text>
+
+  <rect class="box" x="1470" y="369" width="230" height="62"/>
+  <text class="t"   x="1585" y="396">Compute &amp; scope</text>
+  <text class="sub" x="1585" y="416">split entities · convert units</text>
+
+  <!-- ================= outputs ================= -->
+  <rect class="box" x="1760" y="201" width="206" height="52"/>
+  <text class="t" x="1863" y="233">One-line answer</text>
+
+  <rect class="box" x="1800" y="77" width="195" height="52"/>
+  <text class="t" x="1897.5" y="109">Agiloft widget</text>
+
+  <rect class="box" x="1760" y="554" width="195" height="52"/>
+  <text class="t" x="1857.5" y="586">Live dashboard</text>
+
+  <rect class="box" x="1800" y="674" width="163" height="52"/>
+  <text class="t" x="1881.5" y="706">Source line</text>
+
+  <!-- ================= edges ================= -->
+  <path class="edge" d="M272 227 C 302 227 298 385 314 385"/>
+  <path class="edge dash" d="M293 580 C 306 580 304 452 312 428"/>
+
+  <path class="edge" d="M478 400 L519 400"/>
+  <path class="edge" d="M742 400 L766 400"/>
+  <path class="edge" d="M990 400 L1014 400"/>
+  <path class="edge" d="M1205 400 L1239 400"/>
+
+  <!-- refetch loop -->
+  <path class="edge dash" d="M1323 322 C 1300 176 1152 172 1112 362"/>
+  <text class="el" x="1218" y="158">hit the cap → refetch higher</text>
+
+  <path class="edge" d="M1401 400 L1464 400"/>
+  <text class="el" x="1434" y="352">under the cap</text>
+
+  <path class="edge" d="M1700 392 C 1730 392 1728 240 1754 231"/>
+  <path class="edge" d="M1700 412 C 1730 412 1728 562 1754 573"/>
+
+  <path class="edge dash" d="M1863 201 C 1870 172 1884 148 1893 135"/>
+  <text class="el" x="1990" y="163">if figures differ</text>
+
+  <path class="edge dash" d="M1857 606 C 1863 634 1873 655 1880 668"/>
+  <text class="el" x="1975" y="645">on every panel</text>
+</svg>
