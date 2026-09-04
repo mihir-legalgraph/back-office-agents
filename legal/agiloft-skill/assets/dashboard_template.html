@@ -5,10 +5,18 @@
   AGILOFT LIVE DASHBOARD  -  template
   ===========================================================================
 
-  EDIT ONLY THE `DATA` BLOCK AT THE BOTTOM OF THIS FILE.
+  EDIT ONLY THE `DATA` BLOCK NEAR THE BOTTOM OF THIS FILE.
 
-  Everything above it - styling, layout, chart rendering - is machinery. Leave
-  it alone. Every figure in DATA must come from an Agiloft tool call in the
+  Everything above it - styling, layout, chart rendering - is machinery, and so
+  is the small BOOTSTRAP script block that follows DATA. Leave both alone. The
+  bootstrap is a separate <script> on purpose: if DATA has a syntax error, that
+  block dies by itself and the bootstrap still runs and prints what went wrong,
+  instead of leaving a blank white page. Never merge them, and never delete the
+  bootstrap.
+
+  After writing DATA, re-read it once looking for the three faults that produce
+  a blank page: a trailing comma, an unescaped quote or apostrophe inside a
+  string, and an unbalanced bracket or brace. Every figure in DATA must come from an Agiloft tool call in the
   current conversation. The sample values shipped here are placeholders and
   must all be replaced before this is shown to anyone.
 
@@ -746,7 +754,11 @@
     if (dash.filters && dash.filters.length) {
       var filters = el("div", "filters");
       dash.filters.forEach(function (f) {
-        filters.appendChild(el("div", "filter", esc(f.label) + "<b>" + esc(f.value) + "</b>"));
+        // accept both {label, value} and a plain string
+        var html = (f && typeof f === "object")
+          ? esc(f.label) + "<b>" + esc(f.value) + "</b>"
+          : "<b>" + esc(f) + "</b>";
+        filters.appendChild(el("div", "filter", html));
       });
       board.appendChild(filters);
     }
@@ -765,7 +777,19 @@
     }
 
     var grid = el("div", "grid");
-    (dash.cards || []).forEach(function (c) { grid.appendChild(renderCard(c)); });
+    (dash.cards || []).forEach(function (c) {
+      // One malformed card must not blank the whole dashboard.
+      try {
+        grid.appendChild(renderCard(c));
+      } catch (e) {
+        var bad = el("div", "card");
+        bad.appendChild(el("div", "card-title", esc((c && c.title) || "Panel")));
+        bad.appendChild(el("div", "empty",
+          "This panel could not be drawn: " + esc(e && e.message ? e.message : String(e)) +
+          ". The other panels on this dashboard are unaffected."));
+        grid.appendChild(bad);
+      }
+    });
     board.appendChild(grid);
 
     if (dash.caveat) board.appendChild(el("div", "caveat", esc(dash.caveat)));
@@ -911,5 +935,43 @@ var DATA = {
   }
 };
 
-window.__initDashboard();
+</script>
+
+<!-- =========================================================================
+     BOOTSTRAP - deliberately a SEPARATE script block.
+     If the DATA block above has a syntax error, that script dies on its own
+     and this one still runs, so the page explains itself instead of rendering
+     a blank white panel with no clue what went wrong.
+     ========================================================================= -->
+<script>
+(function () {
+  function fail(msg, detail) {
+    var board = document.getElementById("board");
+    if (!board) return;
+    board.innerHTML =
+      '<div class="card" style="grid-column:1/-1">' +
+        '<h3>This dashboard did not render</h3>' +
+        '<p style="margin:10px 0 0;line-height:1.5">' + msg + '</p>' +
+        (detail ? '<pre style="margin:12px 0 0;white-space:pre-wrap;font-size:12px;opacity:.75">'
+                  + String(detail).replace(/[<&]/g, function (c) {
+                      return c === "<" ? "&lt;" : "&amp;"; }) + '</pre>' : "") +
+        '<p style="margin:12px 0 0;line-height:1.5">Tell Claude what this says - ' +
+        'it is a fault in the generated page, not in Agiloft, and the figures ' +
+        'in the chat are unaffected.</p>' +
+      '</div>';
+  }
+  if (typeof window.__initDashboard !== "function") {
+    return fail("The dashboard engine did not load.");
+  }
+  if (typeof DATA === "undefined") {
+    return fail("The DATA block failed to parse, so there was nothing to draw. " +
+                "This is almost always a syntax error in the generated data - " +
+                "a trailing comma, an unescaped quote, or a missing bracket.");
+  }
+  try {
+    window.__initDashboard();
+  } catch (e) {
+    fail("The dashboard engine threw while drawing.", e && (e.stack || e.message));
+  }
+})();
 </script>

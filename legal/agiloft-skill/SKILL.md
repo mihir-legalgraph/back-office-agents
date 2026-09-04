@@ -7,33 +7,109 @@ description: Answer Agiloft contract questions in plain language and keep a live
 
 Two surfaces, two jobs:
 
-- **The chat, on the left** - a short plain answer. One or two sentences.
+- **The chat, on the left** - a plain-language answer that is concrete, reasoned
+  and says what it was counted from. As long as that takes and no longer.
 - **The artifact, on the right** - the live dashboard, in the layout these
   people already recognise from Agiloft.
 
 Never put the dashboard's content into the chat as prose. The split is the
 whole design.
 
-## Rule one: the chat stays short
+## Rule one: complete answers, no padding
 
-The audience is contract requesters, paralegals and business leads. They do not
-want to read.
+The audience is contract requesters, paralegals and business leads. Answer them
+properly - then stop.
+
+**Write for someone who has never opened Agiloft.** A salesperson, a finance
+lead, a business requester. They know their own deal; they do not know your
+status names, and they are not going to work anything out from percentages.
+
+**Four things make an answer good. Length is not one of them.**
+
+1. **Concrete.** A specific figure, name or date - never "several", "a number
+   of", "relatively high".
+2. **To the point.** Every clause is doing a job. If a clause is not carrying
+   information, delete it.
+3. **Reasoned.** Say why the figure is what it is, or what it means. A number
+   with no interpretation is data, not an answer.
+4. **Sourced.** Say what it was counted from, in the answer, in a few words.
+
+Write however many sentences those four things take - no more, no fewer. A
+simple count is one sentence. A bottleneck question is three or four, because
+the reasoning is the answer. Never pad a short answer to look thorough; never
+compress a real finding into a fragment.
+
+### The source belongs in the answer, not only on the dashboard
+
+Every figure names **where in Agiloft it came from**: the table, the fields it
+was filtered on, and the values used. Not "from Agiloft" - that is not a source,
+it is the name of the system. Someone should be able to reproduce your number in
+Agiloft from what you told them.
+
+Use the real field names you discovered, not your paraphrase of them:
+
+- "...from the Contract table, counting every record - 1,722 in total."
+- "...Contract table, `end_date` between today and 24 November with `status` =
+  Executed. That matches what Agiloft's expiring widget counts."
+- "...Contract table, `agreement_type` in the two confidentiality types, searched
+  on `counterparty_legal_name`."
+- "...from `days_in_current_status` on the Contract table - that is time at the
+  current step, not total time since the contract was raised."
+- "...Invoice table, joined on contract number."
+
+Keep it to a clause. It goes at the end of the answer, after the finding, and it
+is the one part that may use Agiloft's own field names rather than plain English
+- because its whole job is to be checkable against the system.
+
+When two people get different numbers for the same question, the filter is
+always why. Naming it up front is what stops that argument.
+
+### Say the conclusion, not the arithmetic
+
+Never hand someone two percentages and let them work out which is bigger. Do the
+comparison yourself and report what it means.
 
 | Do not write | Write |
 | --- | --- |
-| "I'll query the Agiloft contracts table to find out..." | (just answer) |
-| "Based on the data returned from Agiloft, it appears that there are N contracts currently in flight, which represents..." | "142 contracts are in flight." |
-| A six-bullet breakdown of the numbers | "Legal review is the slowest step. Full picture is on the dashboard." |
-| "Let me know if you'd like me to dig deeper!" | (nothing) |
+| "Intake holds 18% of the backlog against 18% of the in-flight population." | "Intake has the most stuck contracts, but only because it is the busiest stage - it is not actually slower than the others." |
+| "969 in flight, 56% of 1,722 records." | "969 contracts are in progress - more than half of everything on file." |
+| "Median 168 days in current status." | "Contracts are sitting about five and a half months at their current step." |
+| "87 in force, 104 unsigned, 59 closed, total 250." | "87 signed contracts expire in the next 90 days. The other 163 records in that window were never signed or are already cancelled, so nobody has to renew them." |
 
-- Lead with the number or the name. First word of the reply is part of the answer.
+- **Explain a status the first time you use it.** "Awaiting Countersignature -
+  waiting on the other side to sign." They do not know your workflow names.
+- **Say what it means for them.** "Nobody needs to renew those." "That one is
+  not cover yet." A number with no consequence attached is trivia.
+- **Use scale where scale is the point** - "more than half", "about five
+  months" - and give the raw figure too when someone would act on it.
+
+### Worked examples
+
+| Too thin | Padded | Right |
+| --- | --- | --- |
+| "142." | "Great question! Let me look into the Agiloft contracts table for you. Based on the data returned, it appears that there are currently 142 contracts in an in-flight status, which represents approximately..." | "142 contracts are in progress - drafted, in review, or waiting for a signature. Most are sitting with Legal Review. From the Contract table, `status` in the ten in-flight values." |
+| "With Counterparty." | A six-bullet breakdown restating every number on the dashboard | "Contracts are getting stuck waiting on the other side to sign - 239 have been there over three months. That step holds far more of the old backlog than its share of the workload, so it is genuinely slow rather than just busy. From `days_in_current_status` on the Contract table - time at the current step, not total age." |
+| "Yes." | "I searched extensively across multiple agreement types and can confirm that..." | "Yes - Acme Inc has three NDAs in force, the newest running to 29 November 2027, so you are covered. Two more are drafted but unsigned and do not count. Contract table, `agreement_type` in the two confidentiality types, matched loosely on `counterparty_legal_name`." |
+
+**Cut these, always:**
+
+- Preamble. No "I'll check", "Let me look", "Great question".
+- Sign-offs and offers. No "Let me know if you'd like more detail!"
+- Narrating the method. Which tool you called is not the answer. Naming the
+  scope is - "counted across all contract records" is a source; "I ran a select
+  on the contract table with a filter on end_date" is narration.
+- Reciting the dashboard. Name what is on it; do not read it out.
+
+**Keep these, always:**
+
+- Lead with the answer. The first few words carry the figure or the name.
 - Money as `$240K` / `$1.2M`. Dates as `12 March`. No record IDs unless asked.
-- No preamble, no sign-off, no offers to do more.
-- Point at the dashboard rather than reciting it.
-- **Never estimate or infer a number.** If Agiloft did not return it, say
+- The scope of any number that has more than one defensible scope.
+- **Never estimate or infer a figure.** If Agiloft did not return it, say
   "Agiloft doesn't track that". A confidently wrong number in front of a
   leadership audience is the failure mode that matters.
-- Empty result is a real answer: "Nothing matches that."
+- An empty result is a real answer, and needs its source too: "Nothing matches -
+  Contract table, `end_date` in that window, all agreement types and all statuses."
 
 ## Rule two: answer the question they asked
 
@@ -51,7 +127,9 @@ Read the first word. It decides what comes back.
 
 "What are" and "which" and "show me" ask for **things**, not totals. Put the
 records on the dashboard as a `table` card and answer with the shape of it:
-"422 agreements — the 20 nearest are on the dashboard, Vendor Agreements first."
+"422 agreements are ending, mostly vendor contracts. The 20 closest are on the
+dashboard - the first runs out on 3 September. Contract table, `end_date` within
+90 days, all statuses."
 
 A count is a fine *addition* to a list. It is not a substitute for one.
 
@@ -88,24 +166,27 @@ A panel with no `source` is unfinished.
 Most Agiloft deployments already have dashboards answering some of these
 questions. **When a panel overlaps one, name it and show its number too.**
 
-Widgets commonly present in an Agiloft CLM setup:
+Agiloft dashboards are built by each customer from saved searches and chart
+widgets - there is no fixed set that ships with the product. So you cannot know
+in advance what theirs are called. What you can do is recognise the *kinds* of
+widget almost every CLM deployment builds, and reconcile against them when the
+person mentions one or when their figure differs from yours:
 
-| Agiloft widget | Overlaps |
+| Kind of widget | Overlaps your panel |
 | --- | --- |
-| Number of Contracts in Flight | in-flight tile |
-| Number of Executed Contracts | executed tile |
-| Total Number of Contracts | total tile |
-| Number of Canceled / Incomplete Requests | cancelled tile |
-| Contracts in Flight (pie) | in-flight mix by agreement type |
-| Executed Contracts (donut) | executed mix by agreement type |
-| Upcoming Expiring Contracts (30-60-90) | expirations in 90 days |
-| Created Month-over-Month | created trend |
-| Executed Month-over-Month | executed trend |
-| Automated NDA Execution Method | DocuSign automation split |
-| Record Source: native vs imported | record source split |
-| Token Programs | token programs bar |
-| Invoice Status for Executed Agreements | invoice status pie |
-| Upcoming Expiring Contracts (Year from Now) | vendor 12-month expirations |
+| A count of contracts in progress | in-flight tile |
+| A count of signed or executed contracts | in-force tile |
+| A total record count | total tile |
+| A count of cancelled or withdrawn requests | closed tile |
+| A breakdown of in-progress work by agreement type | in-flight mix |
+| A breakdown of signed contracts by agreement type | in-force mix |
+| Expirations at 30 / 60 / 90 days | expirations panel |
+| Volume created or signed per month | trend charts |
+| A twelve-month renewal outlook | vendor renewals panel |
+
+**Ask rather than guess.** If someone says "that doesn't match our dashboard",
+ask which dashboard and what it shows. Their definition of the figure is the one
+that matters, and the difference is nearly always a status scope.
 
 **If your number differs from the widget's, that is information, not a bug.**
 Say why in `differs`, in one clause. The usual causes:
@@ -126,12 +207,21 @@ correct one without knowing why they differ.
 
 ### In the chat: name the scope, not the method
 
-The chat stays one or two sentences. But when your figure would differ from what
-someone sees in Agiloft, add the scope in a few words:
+Say what a figure covers. Do not say how you got it.
 
-- "422 agreements have an end date in the next 90 days — that includes unsigned
-  ones. Agiloft's expiring widget shows 391 for signed contracts only."
-- Not: a paragraph explaining the query.
+When your number would differ from what someone sees on their own Agiloft
+screen, name the difference in the answer itself - that is part of a complete
+answer, not an aside:
+
+- "391 signed contracts run out in the next 90 days - that matches the expiring
+  widget in Agiloft. There are 31 more records with an end date in that window,
+  but they were never signed or have already been cancelled, so they are not
+  renewals anyone has to chase."
+- Not: "I ran a select on the contract table filtering end_date between..."
+- Not: "422 records, of which 391 are Executed status (92.7%)."
+
+The scope belongs in the sentence. The query belongs in the source line on the
+panel, where someone who wants to check it will look.
 
 ## Whose data you are looking at
 
@@ -292,16 +382,53 @@ itself rather than reading as a confirmed absence.
 ### "What are the terms of this agreement with X?"
 
 Find the record, `agiloft_read` it, and report the fields that are actually
-populated — parties, dates, value, renewal, notice period, owner, status.
+populated. **How much you can answer depends on how the knowledgebase is set
+up** - see "What you can get out of an attachment" below. Establish which of the
+three levels applies before deciding this cannot be answered.
 
-**Say what you are reading from.** "From the Agiloft record" is different from
-having read the signed document, and the person needs to know which they got.
-If key terms are only in an attachment you cannot open, say so: "The record has
-the dates and value. Payment terms and liability caps would be in the signed
-PDF, which I can't read from here."
+- **AI-extracted term fields present and populated** → answer from them, and say
+  they were extracted from the document rather than typed by a person.
+- **Only record metadata** → report parties, dates, value, renewal, notice
+  period, owner, status, and say the commercial terms are in the signed file.
+- **Nothing relevant populated** → say so plainly.
+
+**Always say what you read from.** "From the contract record" and "from terms
+extracted out of the signed PDF" are different claims, and someone acting on a
+liability cap needs to know which one they got.
 
 Never infer a term from the agreement type. A Vendor Agreement does not
 automatically have 30-day payment terms.
+
+### What you can get out of an attachment
+
+The signed document is a file on the record, not a set of columns. There are
+three levels of access, and knowledgebases differ - check, do not assume.
+
+| Level | What you get | How to tell |
+| --- | --- | --- |
+| **Metadata** | Filename, size, type. Always available. | An attachment field on the record; `agiloft_attachinfo` or similar if the connector exposes it |
+| **Full-text search** | Which records contain a phrase - matching, not reading | Search on `-TEXT-` rather than a named field. Covers .doc, .docx, .txt and text-based PDFs. Files scanned as images are not indexed unless OCR'd |
+| **AI-extracted fields** | Actual term values, queryable like any other field | Ordinary fields on the contract record - governing law, payment terms, liability cap, auto-renew, notice period - populated by Agiloft's Extract Key Terms action |
+
+**Look for the third level during discovery.** When you read the first contract
+record, check for fields that look like extracted terms. If they exist and carry
+values, the terms question is answerable and the answer comes from fields, not
+guesswork.
+
+**Full-text search finds, it does not read.** `-TEXT-` search tells you a
+contract contains the phrase "auto-renewal"; it does not tell you what the
+clause says. Use it to locate records, never to assert what a document
+provides. And if a record has several attachments, a match returns the record
+without saying which file matched.
+
+**Label AI-extracted values as extracted.** They were produced by a model
+reading a PDF, not typed by a lawyer. That provenance belongs in the answer:
+"Payment terms are Net 45 and the liability cap is $2M - both extracted from the
+signed PDF by Agiloft's key-terms extraction, so worth confirming against the
+document before you rely on them."
+
+**Never open, transcribe or summarise an attachment you have not actually
+read.** If all you have is the filename, you have the filename.
 
 ### "When does this agreement terminate?"
 
@@ -314,14 +441,21 @@ June 2027, but it auto-renews unless cancelled 60 days before."
 
 ### "What does this contract do for us?" / "Summarize this contract"
 
-The honest answer depends on what you can reach.
+The honest answer depends on what you can reach - the three levels above.
 
-- **If you can read the document text**, summarize it: what each side provides,
-  term, value, key obligations, how it ends.
+- **If AI-extracted term fields are populated**, use them and say where they came
+  from: "A Vendor Agreement with NXGN, signed 30 September 2026, running to 29
+  September 2027. Payment terms Net 45, liability capped at $2M, governing law
+  New York - those three were extracted from the signed PDF by Agiloft rather
+  than entered by hand, so confirm them against the document before relying on
+  them."
+- **If you can read the document text itself**, summarize it: what each side
+  provides, term, value, key obligations, how it ends.
 - **If you only have the record fields**, say that plainly and summarize those:
-  "From the Agiloft record: a Vendor Agreement with NXGN, signed 30 September
-  2026, running to 29 September 2027, owned by Juraj Kosik. The record doesn't
-  include the scope or commercial terms — those are in the signed document."
+  "A Vendor Agreement with NXGN, signed 30 September 2026, running to 29
+  September 2027, owned by Juraj Kosik. That is everything the contract record
+  holds - the scope and commercial terms are in the signed document, which this
+  knowledgebase does not extract into fields."
 
 **Do not write a plausible-sounding summary of a contract you have not read.**
 This is the single most dangerous thing in this skill: a confident paragraph
@@ -360,10 +494,11 @@ means anything.
 This applies to every fetch, not just ones where you are "counting" - a chart
 built from a capped fetch is just as wrong as a tile.
 
-In testing, an expirations query fetched with a limit of 500 returned exactly 500
-and looked like an answer. The true figure was nearly three times that. The tile
-would have been wrong by a factor of three, the monthly bars under it wrong in
-the same proportion, and nothing on screen would have hinted at a problem.
+An expirations query sent with a limit of 500 that comes back with exactly 500
+rows looks like an answer. It usually is not - it is the page size, and the real
+figure can be several times larger. The tile is then wrong by that factor, the
+monthly bars beneath it wrong in the same proportion, and nothing on screen
+hints at a problem.
 
 Raising the limit costs one extra call. Getting it wrong costs the credibility of
 the whole dashboard.
@@ -425,22 +560,44 @@ whole page obey it.
 
 ## The four dashboards
 
+**These four views are this skill's own layout, not a copy of anyone's Agiloft.**
+Agiloft ships a dashboard *builder* - a canvas of widgets each customer
+assembles themselves - not a standard set of dashboards. So there is nothing to
+mirror. What these four are is the four audiences that exist in every contract
+team, and the questions each of them actually asks.
+
 | Dashboard | key | Who | Answers |
 | --- | --- | --- | --- |
-| Contract Reporting | `reporting` | Leadership, legal ops | Volumes, in flight vs executed, mix by type, month-over-month, expirations |
-| Contract Requester | `requester` | Business requesters | My drafts, my contracts, where is my request, invoice status |
+| Contract Reporting | `reporting` | Leadership, legal ops | Volumes, in progress vs signed, mix by type, month-over-month, expirations |
+| Contract Requester | `requester` | Business requesters | My drafts, my contracts, where my request has got to |
 | Cycle Times Reporting | `cycletimes` | Legal ops, reviewers | How long contracts sit per status, where the backlog is, by agreement type |
-| Vendor Management | `vendor` | Procurement, vendor owners | My vendor contracts, renewal workload a year out, created/executed trend |
+| Vendor Management | `vendor` | Procurement, vendor owners | Vendor contracts, renewal workload a year out, active counterparties |
 
-All four are mapped. Agiloft's own dashboard names are "Contract Reporting
-Dashboard", "Contract Requester Dashboard", "Cycle Times Reporting Dashboard"
-and "Vendor Management" — match those exactly in the tab labels so people
-recognise them.
+Build all four every time, with these names. They are stable across deployments
+precisely because they describe audiences rather than one customer's
+configuration.
+
+**If the customer has their own dashboards, borrow their names.** When someone
+refers to "the renewals dashboard" or "our exec report", use their label on the
+matching tab so the page looks like something they recognise. Do not invent a
+mapping you have not been told about.
 
 ## Dashboard recipes
 
-Set `active` to the dashboard that answers what they asked. Populate that one
-properly; leave the others as tabs with whatever you have.
+**Always build all four. Never ask which one they want.**
+
+"Show me the dashboard" means all four tabs, populated. Asking "which dashboard
+do you want open?" is a wrong answer to that request - it puts the work back on
+someone who came here precisely so they would not have to know which Agiloft
+report answers their question. The tabs cost one extra query each and the whole
+point is that the other three are already there when they think of the next
+question.
+
+Set `active` to the dashboard that answers what they actually asked, so the
+right tab is in front when the page opens. Populate the other three too. If a
+panel on a non-active tab needs data you have not fetched, fetch it - and if
+some genuinely cannot be filled, mark those panels `empty` with a reason rather
+than leaving the tab bare.
 
 ### Contract Reporting
 
@@ -476,20 +633,28 @@ one agiloft_select per month, each filtered to that month
 Tile tones: in flight `teal`, executed `purple`, total none, cancelled `red`.
 That matches what they see in Agiloft.
 
-**The rest of the panels on Agiloft's own version of this dashboard**, worth
-building when the data supports them:
+**Further panels, built from what this knowledgebase actually has:**
 
 | Panel | How |
 | --- | --- |
-| Automated NDA Execution Method | Stacked bar, split on the DocuSign-automation field, segments "Not Involved" / "Paralegal Involved" |
-| Executed Month-over-Month | Same month-by-month approach, but on execution date |
-| Expirations next 90 days | Bar by month over the contract end date |
+| Signed month-over-month | The same month-by-month approach, on the execution date field |
+| Expirations next 90 days | Bar by month over the end-date field |
 | Single-agreement-type donuts | One donut per high-volume agreement type, split by its subtype where one exists |
-| NDA Reviewer | Bar over the reviewer-status field |
-| Record Source: Native Agiloft vs ZIP | Bar by agreement type, split true/false on the record-source field |
 
-Build the ones you have fields for. Leave the rest out — an absent panel is
-better than a wrong one.
+**Then add panels for the dimension fields you discovered.** Every deployment
+carries a handful of choice fields specific to that business - a programme name,
+a region, a business unit, a routing or automation flag, a review outcome. These
+are where a customer's own dashboard gets its character, and you only learn them
+by looking.
+
+The rule: take each choice field on the contract record with a manageable number
+of distinct values - roughly three to a dozen - and build one panel per field,
+grouping contracts by it. Name the panel after the field's own label. Skip
+free-text fields, dates, and anything with hundreds of values.
+
+Build the ones you have fields for. Leave the rest out - an absent panel is
+better than a wrong one, and a panel built on a field you guessed at is worse
+than both.
 
 ### Contract Requester
 
@@ -503,24 +668,17 @@ agiloft_select  owner = them, limit 10, newest first -> "My Contracts" table, sp
 
 A tile showing zero is correct and useful — do not hide it.
 
-**The "Contract Hotlinks" card needs care.** In Agiloft those are working
-buttons; on your dashboard you do not have their URLs. Either drop the card, or
-render the labels as plain text with no `url` so nobody clicks something dead.
-The four dashboard URLs are the exception — those you can link.
+**A shortcuts or hotlinks card needs care.** If a customer's own dashboard has
+one, those are working buttons in Agiloft; on your page you do not have their
+URLs. Either drop the card or render the labels as plain text with no `url`, so
+nobody clicks something dead.
 
-**Token Programs and Invoice Status both exist** — Agiloft's own version of this
-dashboard renders them, so the data is there. A previous run reported them as
-"not mapped"; that was a failure to find the fields, not an absence.
-
-- **Token Programs** — bar chart, one bar per token program. Categories seen in
-  Agiloft: Liquidity Program, Marketing Program, Token Rewards, Integration Fee,
-  Drops Program, Monthly Fees. Look for a token-program field on the contract
-  record, or a related table.
-- **Invoice Status for Executed Agreements** — pie, one slice per status.
-  Statuses seen in Agiloft: paidInFull, pendingApproval, Manually Processed,
-  Draft, Open, rejected. Likely a separate invoice table rather than a contract
-  field — check `agiloft_list_tables` or search before concluding it is
-  unreachable.
+**Look past the contract table for this dashboard.** A requester's view often
+depends on related tables - invoices, tasks, approvals, signature records -
+which hold the "what happened to my request" detail that the contract record
+does not. List the tables the connector exposes before concluding something is
+unavailable. A related table you did not look for is the most common reason a
+panel gets wrongly reported as impossible.
 
 If you genuinely cannot reach them, say **"I couldn't find the field for this"**
 rather than "this isn't tracked" — those mean different things, and the second
@@ -585,11 +743,18 @@ sitting at roughly the same share and median - means the delay is systemic, not
 located in one place. Naming the largest bar anyway invents a bottleneck and
 sends someone to fix the wrong thing.
 
-> Real: "With Counterparty is the hold-up - 42% of the over-90-day backlog sits
-> there, well above its share of contracts."
+Do that comparison silently and report the conclusion. The percentages are
+how you work it out, not what you say.
+
+> Real: "Contracts are getting stuck waiting on the other side to sign. Far more
+> of the old backlog sits at that step than its share of the workload would
+> explain, so it is genuinely the slow one. About 240 contracts have been there
+> over three months."
 >
-> Flat: "Nothing stands out. Every stage has 80-90% of its contracts over 90
-> days, so the delay is across the board rather than in one place."
+> Flat: "No single step is the hold-up - everything is slow. Contracts sit
+> roughly five months at whichever stage they are in, whether that is legal
+> review, intake or a signature. Intake has the most stuck simply because it is
+> the busiest stage, not because it is slower."
 
 Agiloft's own Cycle Times dashboard usually carries per-agreement-type
 breakdowns too - one area chart over status for each higher-volume agreement
@@ -782,6 +947,7 @@ Check before relying on any of these. None are guaranteed:
 | Auto-renew flag | Mention it when answering "when does this terminate" | Do not imply a contract simply ends |
 | Record source / import flag | Native vs imported splits work | Skip those panels |
 | Assigned paralegal or reviewer | Workload panels work | Skip them |
+| **AI-extracted term fields** - governing law, payment terms, liability cap, notice period, auto-renew | The "what are the terms" question is answerable from fields. Label the values as extracted from the document | The record holds metadata only; terms live in the signed file |
 
 **A missing field is a fact to report, not a gap to fill.**
 
