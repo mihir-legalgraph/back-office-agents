@@ -1,4 +1,4 @@
-# Agiloft Contract Dashboards Skill — allneurons
+# Agiloft Contract Dashboards Skill - allneurons
 
 Ask a contract question in plain English. Get an answer with its source, and a
 live four-tab dashboard beside the chat — without opening Agiloft.
