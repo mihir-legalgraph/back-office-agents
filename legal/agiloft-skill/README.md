@@ -12,9 +12,8 @@ differs from ours.*
 ## Prerequisites
 
 - [Download the skill](../../dist/agiloft-contracts.skill)
-- **To install:** download the file above, then add it in Claude Desktop under **Settings → Skills**, or unzip it into `~/.claude/skills/agiloft-contracts/`. Restart Claude fully afterwards.
+- **To install:** download the file above, then add it in Claude Desktop under **Settings → Skills**. Restart Claude fully afterwards.
 - **An Agiloft MCP connector installed and connected.** This skill reads contract data through it and does not connect to Agiloft on its own. Check Settings → Connectors for `agiloft`, or run `claude` then `/mcp`.
-- **Network access to your Agiloft instance** — a VPN connection if your deployment requires one.
 - **Claude Cowork**, on a Pro, Team or Enterprise plan.
 
 **Check the connector is on.** In Cowork, the **+** menu → **Connectors**, with `agiloft` toggled on:
