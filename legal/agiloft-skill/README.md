@@ -194,7 +194,7 @@ see", not "none exist".
   <img src="./assets/architecture.png" width="900" alt="Internal workflow — question to answer and dashboard">
 </p>
 
-<sub>Solid lines run every time. Dashed lines are conditional — the refetch loop fires only when a page comes back full, and the Agiloft widget figure appears only when it differs from ours.</sub>
+<sub>Solid arrows are the path every question takes. Dashed arrows are conditional — the knowledgebase read, a follow-up re-scoping the page in place, and the Agiloft widget figure, which appears only when it differs from ours.</sub>
 
 `SKILL.md` is the operating procedure. In order:
 
