@@ -1,5 +1,7 @@
 # agiloft-dashboards — Contract Answers Without Opening Agiloft
 
+<!-- Draft A of two. Draft B is the prose version in [README-classic.md](./README-classic.md). Pick one and delete the other. -->
+
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-compatible-2ea44f)](https://agentskills.io)
 [![Claude Cowork](https://img.shields.io/badge/Claude-Cowork-8a2be2)](https://claude.ai)
 [![Agiloft CLM](https://img.shields.io/badge/Agiloft-any%20CLM%20knowledgebase-0d9488)](https://www.agiloft.com)
