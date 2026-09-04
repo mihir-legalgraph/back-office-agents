@@ -9,7 +9,7 @@ Claude skills for back-office workflows.
 ## Status
 
 **Pre-release.** The skill has been validated against synthetic knowledgebases
-with known ground truth (120 automated checks, 100%). It has **not yet been run
+with known ground truth (185 automated checks, 100%). It has **not yet been run
 against a live Agiloft instance**, so the tool call shapes are unproven against a
 real deployment. See the Testing section in the skill's README for what is and
 is not covered.
