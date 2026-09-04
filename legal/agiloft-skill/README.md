@@ -191,7 +191,7 @@ see", not "none exist".
 ## 🔄 How It Works
 
 <p align="center">
-  <img src="./assets/architecture.svg" width="900" alt="Internal workflow — question to answer and dashboard">
+  <img src="./assets/architecture.png" width="900" alt="Internal workflow — question to answer and dashboard">
 </p>
 
 <sub>Solid lines run every time. Dashed lines are conditional — the refetch loop fires only when a page comes back full, and the Agiloft widget figure appears only when it differs from ours.</sub>

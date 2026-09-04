@@ -5,7 +5,7 @@
 Ask a contract question in plain English. Get an answer with its source, and a
 live four-tab dashboard beside the chat — without opening Agiloft.
 
-![Architecture](./assets/architecture.svg)
+![Architecture](./assets/architecture.png)
 
 *Solid lines run every time. Dashed lines are conditional — the refetch loop fires
 only when a page comes back full, and the Agiloft widget figure appears only when it

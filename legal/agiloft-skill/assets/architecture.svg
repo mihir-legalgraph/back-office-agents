@@ -62,7 +62,7 @@
 
   <!-- ================= outputs ================= -->
   <rect class="box" x="1760" y="201" width="206" height="52"/>
-  <text class="t" x="1863" y="233">One-line answer</text>
+  <text class="t" x="1863" y="233">Answer + source</text>
 
   <rect class="box" x="1800" y="77" width="195" height="52"/>
   <text class="t" x="1897.5" y="109">Agiloft widget</text>
