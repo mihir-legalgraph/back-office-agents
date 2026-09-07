@@ -21,11 +21,17 @@ exists; do not replace them with live captures.**
 
 Regenerate after any template change: `cd _working/tests && python shots.py`
 
-## Illustrative — replace with live captures
+## Illustrative — reconstructions, shipping as-is
 
 Produced by `_working/tests/mock_chat.html`, rendered by the snippet at the foot
 of this file. They show Claude Desktop, which cannot be captured from the
-dashboard file. Each carries an `illustrative` tag bottom-left.
+dashboard file. Each carries an `illustrative` tag.
+
+**These ship as they are.** Standing up a live Agiloft connector requires an
+Agiloft licence, which we do not hold, so the surrounding UI is drawn rather
+than captured. The figures inside the frames are computed from the same dummy
+knowledgebase, so the content is accurate even though the chrome is not a
+photograph. Replace them if and when licensed access exists — not before.
 
 | File | What it shows | How faithful |
 | --- | --- | --- |

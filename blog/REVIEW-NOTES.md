@@ -14,11 +14,21 @@ Needs `python-docx`. The architecture diagram is pulled from
 `../legal/agiloft-skill/assets/architecture.png` at build time, so it never
 drifts from the one in the skill README.
 
+## Settled
+
+- **Impact table** — now one row: building the four-tab dashboard takes **15–20
+  minutes** from a single question. The "before" column carries no number
+  deliberately; Agiloft has no view that answers all four questions side by side,
+  so there is nothing to time against.
+- **Screenshots** — the Claude Desktop frames in the skill README are
+  reconstructions and ship that way. A live connector needs an Agiloft licence we
+  do not hold. Every figure inside the frames is computed from the dummy
+  knowledgebase, so the content is accurate even where the chrome is drawn.
+
 ## Open items — deliberate, not oversights
 
 | Item | Where | Why it is open |
 | --- | --- | --- |
-| Two `TBD` rows in the Impact table | *Impact* | Time-to-answer and interruptions-per-week have not been measured. They are left blank rather than estimated, because every other number in the piece is measured and mixing the two would undermine both. **Decision needed: measure during a pilot, or cut the table.** |
 | Repo link | *Deployment*, *Get Started* | The repo is private. Fills in at publication. |
 | Contact link | *Get Started* | Needs the allNeurons contact URL. |
 

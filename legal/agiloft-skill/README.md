@@ -20,7 +20,7 @@ ways a contract number goes wrong.
   <img src="./assets/03-answer.png" width="900" alt="A contract question answered in chat, with the live dashboard beside it">
 </p>
 
-<sub>Dashboard panels throughout are real renders against a dummy knowledgebase — every counterparty in them is invented. The Claude Desktop frames around them are illustrative and tagged as such, pending live captures.</sub>
+<sub>Dashboard panels throughout are real renders against a dummy knowledgebase — every counterparty in them is invented. The Claude Desktop frames around them are reconstructions, tagged <code>illustrative</code>: building a live Agiloft connector needs an Agiloft licence, which we do not hold, so the surrounding UI is drawn rather than captured. The figures shown inside them are computed from the same dummy knowledgebase and are accurate.</sub>
 
 ## ✨ Highlights
 

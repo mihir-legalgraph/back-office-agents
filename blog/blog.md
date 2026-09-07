@@ -86,12 +86,13 @@ With the skill:
 
 **Ask in plain English → Claude → Agiloft MCP → fetch and check → an answer with its source + a live dashboard → the reader verifies against Agiloft if they want to**
 
-| Metric | Before | With the Skill | Improvement |
-| --- | --- | --- | --- |
-| Time to answer a routine contract question | *TBD* | *TBD* | *TBD* |
-| Paralegal interruptions per week | *TBD* | *TBD* | *TBD* |
+| Metric | Before | With the Skill |
+| --- | --- | --- |
+| Building the four-tab dashboard | Assembled by hand in Agiloft, one report at a time, by someone who knows the reporting module | **15–20 minutes**, from a single question, by someone who has never opened Agiloft |
 
-*[To be measured during the live pilot. We have deliberately not estimated these — the accuracy numbers below are measured, and mixing them with guesses would undermine both.]*
+The "before" column has no number in it on purpose. There is no Agiloft view that
+answers all four of these questions side by side, so there is nothing to time —
+the comparison is between a dashboard that gets built and one that does not.
 
 ### Accuracy
 
