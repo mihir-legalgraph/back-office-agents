@@ -1,4 +1,4 @@
-# Agiloft Contract Dashboards Skill — allneurons
+# Agiloft Contract Dashboards Skill - allneurons
 
 > **Draft B of two.** Draft A is the structured version in [README.md](./README.md), which is what GitHub renders by default. Pick one and delete the other.
 
